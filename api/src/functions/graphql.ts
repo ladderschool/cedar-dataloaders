@@ -14,7 +14,10 @@ import { logger } from 'src/lib/logger'
 
 const dataloaderPlugin = useDataLoader(
   'pages',
-  () => new DataLoader(magazines.batchFnMagazinePages)
+  () =>
+    new DataLoader(magazines.batchFnMagazinePages, {
+      cache: false, // You can control whether to cache the results
+    })
 ) as Plugin
 
 export const handler = createGraphQLHandler({
